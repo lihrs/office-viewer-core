@@ -99,7 +99,7 @@ export class WebAppsBuilder {
       }
     } else {
       logger.info("构建 Web Apps (grunt)...");
-      const buildResult = this.executor.npx(["grunt"], cwd);
+      const buildResult = this.executor.npx(["grunt"], cwd, options.packageManager);
       if (!buildResult.success) {
         logger.error("Web Apps 构建失败");
         return false;

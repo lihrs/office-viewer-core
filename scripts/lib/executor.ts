@@ -136,8 +136,11 @@ export class Executor {
 
   /**
    * 执行 npx 命令
+   * 对于 pnpm，使用 `pnpm exec` 代替 `npx`
    */
-  npx(args: string[], cwd: string): ExecResult {
-    return this.run("npx", args, cwd, { injectBuildEnv: true });
+  npx(args: string[], cwd: string, pm: "npm" | "pnpm" | "yarn" = "npm"): ExecResult {
+    const command = pm === "pnpm" ? pm : "npx";
+    const finalArgs = pm === "pnpm" ? ["exec", ...args] : args;
+    return this.run(command, finalArgs, cwd, { injectBuildEnv: true });
   }
 }

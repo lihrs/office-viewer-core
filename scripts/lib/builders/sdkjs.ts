@@ -48,7 +48,7 @@ export class SdkjsBuilder {
 
     // 执行 grunt 构建
     logger.info("构建 SDKJS...");
-    const buildResult = this.executor.npx(["grunt"], buildDir);
+    const buildResult = this.executor.npx(["grunt"], buildDir, options.packageManager);
     if (!buildResult.success) {
       logger.error("SDKJS 构建失败");
       return false;
