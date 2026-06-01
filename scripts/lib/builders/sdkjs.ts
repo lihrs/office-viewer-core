@@ -29,7 +29,7 @@ export class SdkjsBuilder {
 
   /** 执行构建 */
   build(): boolean {
-    const { paths } = this.config;
+    const { paths, options } = this.config;
     const buildDir = path.join(paths.sdkjs, "build");
 
     if (!fs.existsSync(buildDir)) {
@@ -38,8 +38,9 @@ export class SdkjsBuilder {
     }
 
     // 安装依赖
-    logger.info("安装 SDKJS 依赖...");
-    const installResult = this.executor.npm("npm", ["install"], buildDir);
+    const pm = options.packageManager;
+    logger.info(`安装 SDKJS 依赖 (${pm})...`);
+    const installResult = this.executor.npm(pm, ["install"], buildDir);
     if (!installResult.success) {
       logger.error("SDKJS 依赖安装失败");
       return false;
