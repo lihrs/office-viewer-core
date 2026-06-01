@@ -89,6 +89,7 @@ export class Executor {
       cwd,
       env: processEnv,
       stdio: captureOutput ? "pipe" : silent ? "ignore" : "inherit",
+      shell: process.platform === "win32",
     };
 
     logger.debug(`执行命令: ${command} ${args.join(" ")}`);
