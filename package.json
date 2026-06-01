@@ -43,6 +43,7 @@
     "@vitest/ui": "^4.0.18",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
+    "fonteditor-core": "^2.1.0",
     "glob": "^13.0.0",
     "jsdom": "^27.4.0",
     "prettier": "^3.8.1",

@@ -8,7 +8,7 @@
 - **现代架构**：采用 Clean Architecture 设计模式，解耦业务逻辑、应用用例和基础设施实现。
 - **全能编辑**：支持 DOCX, XLSX, PPTX 的在线编辑，以及多格式（PDF, DOCX 等）的导出。
 - **灵活部署**：支持自定义静态资源前缀（`assetsPrefix`），适配各种 CDN 和静态服务器布局。
-- **自定义字体支持**：支持通过 Docker 自动生成并集成自定义字体。
+- **自定义字体支持**：支持自动生成并集成自定义字体（无需 Docker）。
 - **在线预览**：[https://office.851621.xyz/playground/app/index.html](https://office.851621.xyz/playground/app/index.html)
 
 ## 环境要求
@@ -16,7 +16,6 @@
 - **Node.js**: 24.12.0+ (建议使用最新版本)
 - **pnpm**: 9.12.3+
 - **Git**: 用于下载 OnlyOffice 源码
-- **Docker**: 用于生成自定义字体
 - **Windows**: Windows 10 或更高版本 (PowerShell 5.0+)
 
 ## 快速开始
