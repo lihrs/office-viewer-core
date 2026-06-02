@@ -52,7 +52,24 @@ export class WebAppsBuilder {
       }
     }
 
-    // 2. Webpack 5 ESM 补丁
+    // 2. 跳过 imagemin 任务 (Windows 路径问题)
+    const gruntfilePath = path.join(buildDir, "Gruntfile.js");
+    if (fs.existsSync(gruntfilePath)) {
+      let content = fs.readFileSync(gruntfilePath, "utf-8");
+      // 移除 imagemin 任务
+      content = content.replace(
+          /'imagemin', /g,
+          ""
+      );
+      content = content.replace(
+          /, 'imagemin'/g,
+          ""
+      );
+      fs.writeFileSync(gruntfilePath, content);
+      logger.debug("已移除 imagemin 任务 (Windows 路径兼容性)");
+    }
+
+    // 3. Webpack 5 ESM 补丁
     const framework7ConfigPath = path.join(paths.webApps, "vendor/framework7-react/build/webpack.config.js");
     if (fs.existsSync(framework7ConfigPath)) {
       let content = fs.readFileSync(framework7ConfigPath, "utf-8");
